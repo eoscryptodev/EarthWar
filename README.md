@@ -1,6 +1,10 @@
-# SocialSite
+# Earth War
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4. 
+
+Earth War is a working title and is set in the fictional universe known as 'Free Space.' It is an upcoming sci-fi decentralized application that will run on one of three blockchains, the selection of which has yet to be determined.
+
+Earth War is set to be the most advanced text-based RPG ever built which will give players countless complex dialogue options, the ability to buy non-fungible and semi-fungible tokens, space/planetary combat, and more! Along with an advanced story mode that will offer dozens of different outcomes in a choose-your-own-adventure style of gameplay.
 
 ## Development server
 

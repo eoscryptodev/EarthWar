@@ -1,0 +1,502 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,800,900&display=swap" rel="stylesheet">
+</head>
+
+<div id="background">
+  <form [formGroup]="finalForm" (ngSubmit)="submitForm()">
+    <div class="container">
+      <nav>EARTH WAR CHARACTER SHEET</nav>
+      <main>
+        <div class="col-xs-12">
+          <div class="form-group" [formGroup]="characterForm" id="nested">
+            <!-- NAME -->
+            <label class="input-group-text" for="name">Character Name</label>
+            <input
+              placeholder="Enter Name Here"
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+              value="name"
+            />
+
+            <!-- CLASSES -->
+            <label class="input-group-text" for="classes">Character Class</label>
+            <select class="custom-select" formControlName="classes" id="classes" (change)="classUpdate($event.target)">
+              <option value="">Choose a Class</option>
+              <option *ngFor="let chosenClass of classes">{{ chosenClass }}</option>
+            </select>
+
+            <!-- HISTORIES -->
+            <label (click)="openHistoryDialog()" class="input-group-text" for="histories">History
+              <span class="historyHover">What is history?</span>
+            </label>
+            <select class="custom-select" formControlName="histories" id="histories" (change)="historyUpdate($event.target)">
+              <option value="">Choose a History</option>
+              <option *ngFor="let chosenHistory of histories">{{ chosenHistory }}</option>
+            </select>
+
+            <!-- SPECIES -->
+            <label class="input-group-text" for="species">Species</label>
+            <select class="custom-select" formControlName="species" id="species" (change)="speciesUpdate($event.target)">
+              <option value="">Choose a Species</option>
+              <option *ngFor="let chosenSpecies of species">{{ chosenSpecies }}</option>
+            </select>
+
+            <!-- HOME WORLD -->
+            <label class="input-group-text" for="homeworld">Home World</label>
+            <select class="custom-select" formControlName="homeworld" id="homeworld">
+              <option value="">Where were you born?</option>
+              <option *ngFor="let chosenHomeworld of homeworld">{{ chosenHomeworld }}</option>
+            </select>
+
+            <!-- GENDER -->
+            <label class="input-group-text" for="gender">Gender</label>
+            <select class="custom-select" formControlName="gender" id="gender">
+              <option value="">Choose a Gender</option>
+              <option *ngFor="let chosenGender of gender">{{ chosenGender }}</option>
+            </select>
+
+          </div>
+        </div>
+      </main>
+
+      <div id="sidebar">
+        <div class="col-xs-12">
+          <h2>SKILLS</h2>
+          <small>Your core abilities influenced by your class</small>
+          <div [formGroup]="skillsForm" class="form-group" id="nestedTwo">
+
+            <label class="input-group-text" for="acrobatics">Acrobatics</label>
+            <input
+              type="number"
+              id="acrobatics"
+              formControlName="acrobatics"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="athletics">Athletics</label>
+            <input
+              type="number"
+              id="athletics"
+              formControlName="athletics"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="clandestine">Clandestine</label>
+            <input
+              type="number"
+              id="clandestine"
+              formControlName="clandestine"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="computers">Computers</label>
+            <input
+              type="number"
+              id="computers"
+              formControlName="computers"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="disguise">Disguise</label>
+            <input
+              type="number"
+              id="disguise"
+              formControlName="disguise"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="engineering">Engineering</label>
+            <input
+              type="number"
+              id="engineering"
+              formControlName="engineering"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="intimidate">Intimidate</label>
+            <input
+              type="number"
+              id="intimidate"
+              formControlName="intimidate"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="intuition">Intuition</label>
+            <input
+              type="number"
+              id="intuition"
+              formControlName="intuition"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="lifeScience">Life Science</label>
+            <input
+              type="number"
+              id="lifeScience"
+              formControlName="lifeScience"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="medicine">Medicine</label>
+            <input
+              type="number"
+              id="medicine"
+              formControlName="medicine"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="mysticism">Mysticism</label>
+            <input
+              type="number"
+              id="mysticism"
+              formControlName="mysticism"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="piloting">Piloting</label>
+            <input
+              type="number"
+              id="piloting"
+              formControlName="piloting"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="stealth">Stealth</label>
+            <input
+              type="number"
+              id="stealth"
+              formControlName="stealth"
+              class="form-control"
+            />
+
+
+          </div>
+        </div>
+      </div>
+
+      <div id="content1">
+        <div class="col-xs-12">
+          <h2>ABILITY SCORES</h2>
+          <small>Your basic attributes and raw potential</small>
+          <div [formGroup]="abilitiesForm" class="form-group" id="nestedThree">
+
+            <label class="input-group-text" for="might">Might</label>
+            <input
+              type="number"
+              id="might"
+              formControlName="might"
+              class="form-control"
+            />
+            <label class="input-group-text" for="mightModifier">MI Modifier</label>
+            <input
+              type="number"
+              id="mightModifier"
+              formControlName="mightMod"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="agility">Agility</label>
+            <input
+              type="number"
+              id="agility"
+              formControlName="agility"
+              class="form-control"
+            />
+            <label class="input-group-text" for="agilityModifier">AGI Modifier</label>
+            <input
+              type="number"
+              id="agilityModifier"
+              formControlName="agilityMod"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="lifeForce">Life Force</label>
+            <input
+              type="number"
+              id="lifeForce"
+              formControlName="lifeForce"
+              class="form-control"
+            />
+            <label class="input-group-text" for="lifeModifier">LF Modifier</label>
+            <input
+              type="number"
+              id="lifeModifier"
+              formControlName="lifeForceMod"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="intelligence">Intelligence</label>
+            <input
+              type="number"
+              id="intelligence"
+              formControlName="intelligence"
+              class="form-control"
+            />
+            <label class="input-group-text" for="intelModifier">IN Modifier</label>
+            <input
+              type="number"
+              id="intelModifier"
+              formControlName="intelligenceMod"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="wisdom">Wisdom</label>
+            <input
+              type="number"
+              id="wisdom"
+              formControlName="wisdom"
+              class="form-control"
+            />
+            <label class="input-group-text" for="wiModifier">WI Modifier</label>
+            <input
+              type="number"
+              id="wiModifier"
+              formControlName="wisdomMod"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="charisma">Charisma</label>
+            <input
+              type="number"
+              id="charisma"
+              formControlName="charisma"
+              class="form-control"
+            />
+            <label class="input-group-text" for="chModifier">CH Modifier</label>
+            <input
+              type="number"
+              id="chModifier"
+              formControlName="charismaMod"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="spirit">Spirit</label>
+            <input
+              type="number"
+              id="spirit"
+              formControlName="spirit"
+              class="form-control"
+            />
+            <label class="input-group-text" for="spModifier">SP Modifier</label>
+            <input
+              type="number"
+              id="spModifier"
+              formControlName="spiritMod"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="seduction">Seduction</label>
+            <input
+              type="number"
+              id="seduction"
+              formControlName="seduction"
+              class="form-control"
+            />
+            <label class="input-group-text" for="sdModifier">SD Modifier</label>
+            <input
+              type="number"
+              id="sdModifier"
+              formControlName="seductionMod"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="leadership">Leadership</label>
+            <input
+              type="number"
+              id="leadership"
+              formControlName="leadership"
+              class="form-control"
+            />
+            <label class="input-group-text" for="leModifier">LE Modifier</label>
+            <input
+              type="number"
+              id="leModifier"
+              formControlName="leadershipMod"
+              class="form-control"
+            />
+
+          </div>
+        </div>
+      </div>
+
+      <div id="content2">
+        <div class="col-xs-12">
+          <h2>HEALTH AND RESOLVE</h2>
+          <small>A measure of your health, grit and energy</small>
+          <div [formGroup]="healthResolveForm" class="form-group" id="nestedFour">
+
+            <label class="input-group-text" for="csp">Current Stamina Points</label>
+            <input
+              type="number"
+              id="csp"
+              formControlName="currentStamina"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="tsp">Total Stamina Points</label>
+            <input
+              type="number"
+              id="tsp"
+              formControlName="totalStamina"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="chp">Current Health Points</label>
+            <input
+              type="number"
+              id="chp"
+              formControlName="currentHealth"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="thp">Total Health Points</label>
+            <input
+              type="number"
+              id="thp"
+              formControlName="totalHealth"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="crp">Current Resolve Points</label>
+            <input
+              type="number"
+              id="crp"
+              formControlName="currentResolve"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="trp">Total Resolve Points</label>
+            <input
+              type="number"
+              id="trp"
+              formControlName="totalResolve"
+              class="form-control"
+            />
+
+          </div>
+        </div>
+      </div>
+
+      <div id="content3">
+        <div class="col-xs-12">
+          <h2>SAVING THROWS</h2>
+          <small>Your ability to avoid dangerous threats</small>
+          <div [formGroup]="savingThrowsForm" class="form-group" id="nestedFive">
+
+            <label class="input-group-text" for="fortitude">Fortitude</label>
+            <input
+              type="number"
+              id="fortitude"
+              formControlName="fortitude"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="reflex">Reflex</label>
+            <input
+              type="number"
+              id="reflex"
+              formControlName="reflex"
+              class="form-control"
+            />
+
+            <label class="input-group-text" for="will">Will</label>
+            <input
+              type="number"
+              id="will"
+              formControlName="will"
+              class="form-control"
+            />
+
+          </div>
+        </div>
+      </div>
+
+      <footer [formGroup]="characterForm">
+        <div class="col-xs-12">
+          <h2>Character Archetype</h2>
+          <small>Your Class + History Combined</small>
+          <div id="footerText">
+            {{ this.chosenArchetype( this.characterForm, this.characterForm) }}
+          </div>
+        </div>
+      </footer>
+
+      <div id="content5">
+        <div class="col-xs-12">
+          <h2>ARMOR & WEAPON CLASS</h2>
+          <small>Choose your armor and weapon</small>
+          <div [formGroup]="armorForm" class="form-group" id="nestedSeven">
+            <label>ARMOR CLASS</label>
+            <select class="custom-select" formControlName="armor" id="armor" [(ngModel)]="armorSelected">
+              <option value="">Choose a Light Armor</option>
+              <option value="martianLeather">Reinforced Martian Leather</option>
+            </select>
+
+            <div id="armorChoice" *ngIf="armorSelected === 'martianLeather'">
+              <p>{{ chosenLightArmor() }}</p>
+            </div>
+
+            <label>WEAPON CLASS</label>
+            <select class="custom-select" formControlName="weapon" id="weapon" [(ngModel)]="this.weaponSelected">
+              <option value="">Choose a Weapon</option>
+              <option value="solananPlasma">Solanan Plasma Pistol</option>
+            </select>
+
+            <div id="weaponChoiceOne" *ngIf="this.weaponSelected === 'solananPlasma'">
+              <p>{{ chosenWeapon() }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="content4">
+        <div class="col-xs-12">
+          <h2>SUBMIT YOUR CHARACTER SHEET</h2>
+          <h3>{{ submissionText() }}</h3>
+          <button class="submitButton" type="submit">SUBMIT</button>
+        </div>
+      </div>
+
+      <div id="content6">
+        <div class="col-xs-12">
+          <h2>FAME</h2>
+          <small>YOUR CLAIM TO FAME</small>
+          <div class="form-group" [formGroup]="fameForm" id="nestedSix">
+
+            <select class="custom-select" formControlName="fame" id="fame" [(ngModel)]="fameSelected">
+              <option value="">Choose a Fame</option>
+              <option value="chosenSpaceFame">Space Explorer: The Discovery of Triton V</option>
+              <option value="chosenScientistFame">Scientist: The Mutant Incident on Vira Alpha</option>
+              <option value="chosenSoldierFame">Soldier: The Battle of Solana</option>
+              <option value="chosenHackerFame">Hacker: The Martian Conspiracy</option>
+              <option value="chosenPirateFame">Pirate: The Order of Thieves</option>
+            </select>
+
+            <div id="spaceChoice" *ngIf="fameSelected === 'chosenSpaceFame'">
+              <p>{{ chosenSpaceFame() }}</p>
+            </div>
+            <div id="scienceChoice" *ngIf="fameSelected === 'chosenScientistFame'">
+              <p>{{ chosenScientistFame() }}</p>
+            </div>
+            <div id="soldierChoice" *ngIf="fameSelected === 'chosenSoldierFame'">
+              <p>{{ chosenSoldierFame() }}</p>
+            </div>
+            <div id="hackerChoice" *ngIf="fameSelected === 'chosenHackerFame'">
+              <p>{{ chosenHackerFame() }}</p>
+            </div>
+            <div id="pirateChoice" *ngIf="fameSelected === 'chosenPirateFame'">
+              <p>{{ chosenPirateFame() }}</p>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
+

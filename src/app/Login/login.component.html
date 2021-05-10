@@ -1,0 +1,143 @@
+<main>
+  <section id="grid">
+
+    <div class="box">
+      <div class="col-6">
+        <h3>Welcome to Earth War: The Battle for Sola</h3>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="col-6">
+        <p>The Most Advanced Text-Based RPG Ever Built! Designed by Brian Lewis using
+          Angular 11, RxJS, NestJS, the Solana blockchain and lots of coffee! You've
+          never seen a text-based game quite like this.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="grid-a">
+
+    <div class="box" id="myTab">
+      <h3>Join the Fight</h3>
+    </div>
+
+    <div class="box">
+      <mat-tab-group class="mat">
+
+        <mat-tab label="Sign-Up">
+          <app-sign-up></app-sign-up>
+        </mat-tab>
+
+        <mat-tab label="Sign-In">
+          <app-sign-in></app-sign-in>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+
+    <!--<div class="box" id="myTab">
+
+
+        <mat-tab-group>
+          <mat-tab label="Sign-Up">
+            <form [formGroup]="signUpForm" (ngSubmit)="signUpSubmit(signUpForm)" *ngIf="!isLoading">
+              <div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="email">Email:  </label>
+                      <input
+                        type="email"
+                        id="email"
+                        formControlName="email"
+                        class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              &lt;!&ndash;<div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="username">Username: </label>
+                    <input
+                      type="text"
+                      id="username"
+                      formControlName="username"
+                      class="form-control">
+                  </div>
+                </div>
+              </div>&ndash;&gt;
+
+              <div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="password">Password: </label>
+                      <input
+                        type="text"
+                        id="password"
+                        formControlName="password"
+                        class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  mat-raised-button color="primary"
+                  type="submit"
+                  (click)="onCreateProfile()"
+                  [disabled]="!signUpForm.valid">Sign-Up
+                </button>
+              </div>
+
+            </form>
+          </mat-tab>
+
+          <mat-tab label="Login">
+            <form [formGroup]="loginForm" (ngSubmit)="loginSubmit(loginForm)" *ngIf="!isLoading">
+
+              <div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input
+                      type="text"
+                      id="loginUsername"
+                      formControlName="username"
+                      class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input
+                      type="text"
+                      id="loginPassword"
+                      formControlName="password"
+                      class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  mat-raised-button color="primary"
+                  type="submit"
+                  [disabled]="!signUpForm.valid">Login
+                </button>
+              </div>
+
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+
+    </div>-->
+  </section>
+</main>
+<router-outlet></router-outlet>
+
+

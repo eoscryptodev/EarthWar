@@ -1,0 +1,549 @@
+:root {
+  --main-radius: 10px;
+  --main-padding: 10px;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+#background {
+  background: url("https://cdna.artstation.com/p/assets/images/images/000/152/938/large/lino-drieghe-env-cityscape-020814.jpg?1407047008"),
+  no-repeat center center fixed;
+  background-size: contain;
+  min-height: 200vh;
+  //background-color: antiquewhite;
+
+}
+
+.container {
+  display: grid;
+  width: 100vw;
+  height: 140vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: min-content max-content;
+  grid-template-areas:
+    "nav nav nav nav"
+    "sidebar main main main"
+    "sidebar content1 content2 content3"
+    "sidebar footer footer footer"
+    "weapon button button backstory"
+    "weapon button button backstory";
+  grid-gap: 0.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 16px;
+  opacity: 0.9;
+  color: black;
+  text-align: center;
+  justify-content: space-around;
+  //background: url("https://pbs.twimg.com/media/EWmuaKtXkAYOAUS.jpg:large");
+
+  label {
+    box-shadow: 3px 3px 3px 1px #000;
+  }
+
+  label:hover {
+    color: #9B5D38;
+  }
+
+  .input-group-text {
+    font-family: Futura, fantasy;
+    cursor: pointer;
+
+    .historyHover {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      opacity: 90%;
+      text-align: center;
+      position: absolute;
+      z-index: 1;
+      &:hover {
+        visibility: visible;
+      }
+    }
+  }
+
+  nav {
+    background: #667b95;
+    padding: 15px;
+    font-size: 25px;
+    grid-area: nav;
+    font-family: Futura, fantasy;
+    border-radius: var(--main-radius);
+    //padding-top: var(--main-padding);
+  }
+
+  main {
+    background: #e3b295;
+    grid-area: main;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+
+    label {
+      background: rgb(255, 239, 224);
+      background: linear-gradient(90deg, rgba(255, 239, 223, 1)0%, rgba(225, 221, 201, 1) 35%, rgba(190, 131, 96, 1) 100%);
+    }
+
+    #nested {
+      display: grid;
+      grid-template-columns: repeat( 4, 1fr );
+      grid-template-rows: repeat( 6, 1fr );
+      grid-gap: 1em;
+
+      &:nth-child( 1 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 1;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 2 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 1;
+        grid-column: 2/2;
+      }
+
+      &:nth-child( 3 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 2;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 4 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 2;
+        grid-column: 2/2;
+      }
+
+      &:nth-child( 5 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 3;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 6 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 3;
+        grid-column: 2/2;
+      }
+    }
+  }
+
+  #sidebar {
+    background: #667b95;
+    grid-area: sidebar;
+    border-radius: 10px;
+    padding-top: 10px;
+    font-family: Futura, fantasy;
+    color: black;
+
+    label {
+      background: rgb(195, 204, 215);
+      background: linear-gradient(90deg, rgba(195, 204, 215, 1)0%, rgba(143, 159, 178, 1) 35%, rgba(68, 94, 124, 1) 100%);
+    }
+
+    label:hover {
+      color: #2a4566
+    }
+
+    #nestedTwo {
+      display: grid;
+      grid-template-columns: repeat( 2, 1fr );
+      grid-template-rows: repeat( 13, 1fr );
+      grid-gap: 1em;
+
+      input {
+        width: 75px;
+      }
+
+      &:nth-child( 1 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 1/10;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 2 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 2/10;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 3 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 3/10;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 4 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 4/10;
+        grid-column: 1/2;
+      }
+    }
+  }
+
+  #content1 {
+    background: #ffdecc;
+    grid-area: content1;
+    border-radius: 10px;
+    padding-top: 10px;
+
+    label {
+      background: rgb(255, 239, 224);
+      background: linear-gradient(90deg, rgba(255, 239, 223, 1)0%, rgba(225, 221, 201, 1) 35%, rgba(190, 131, 96, 1) 100%);
+    }
+
+    #nestedThree {
+      display: grid;
+      grid-template-columns: repeat( 4, 1fr );
+      grid-template-rows: repeat( 9, 1fr );
+      grid-gap: 1em;
+
+      input {
+        width: 50px;
+        height: 35px;
+      }
+
+      label {
+        height: 35px;
+      }
+
+      &:nth-child( 1 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 1/4;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 2 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 2/4;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 3 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 3/4;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 4 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 4/4;
+        grid-column: 1/2;
+      }
+    }
+  }
+
+  #content2 {
+    background: #ffdecc;
+    grid-area: content2;
+    border-radius: 10px;
+    padding-top: 10px;
+
+    label {
+      background: rgb(255, 239, 224);
+      background: linear-gradient(90deg, rgba(255, 239, 223, 1)0%, rgba(225, 221, 201, 1) 35%, rgba(190, 131, 96, 1) 100%);
+    }
+
+    #nestedFour {
+      display: grid;
+      grid-template-columns: repeat( 2, 1fr );
+      grid-template-rows: repeat( 6, 1fr );
+      grid-gap: 1em;
+
+      input {
+       width: 50px;
+      }
+
+      label {
+
+      }
+
+      &:nth-child( 1 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 1/6;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 2 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 2/6;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 3 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 3/6;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 4 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 4/6;
+        grid-column: 1/2;
+      }
+    }
+  }
+
+  #content3 {
+    background: #ffdecc;
+    grid-area: content3;
+    border-radius: 10px;
+    padding-top: 10px;
+
+    label {
+      background: rgb(255, 239, 224);
+      background: linear-gradient(90deg, rgba(255, 239, 223, 1)0%, rgba(225, 221, 201, 1) 35%, rgba(190, 131, 96, 1) 100%);
+    }
+
+    #nestedFive {
+      display: grid;
+      grid-template-columns: repeat( 2, 1fr );
+      grid-template-rows: repeat( 3, 1fr );
+      grid-gap: 1em;
+
+      input {
+        width: 50px;
+      }
+
+      label {
+
+      }
+
+      &:nth-child( 1 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 1/3;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 2 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 2/3;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 3 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 3/3;
+        grid-column: 1/2;
+      }
+
+      &:nth-child( 4 ) {
+        border: #18ffff;
+        padding: 1em;
+        grid-row: 4/6;
+        grid-column: 1/2;
+      }
+    }
+  }
+
+  footer {
+    background: #e3b295;
+    grid-area: footer;
+    height: 180px;
+    border-radius: 10px;
+    padding-top: 10px;
+
+    #footerText {
+      font-size: 25px;
+      font-family: -apple-system, "Optima", serif;
+      font-weight: lighter;
+
+      }
+    }
+  }
+
+  #content4 {
+    background: #ffdecc;
+    grid-area: button;
+    border-radius: 10px;
+    padding-top: 10px;
+    height: 40vh;
+    margin-top: 5px;
+
+    h3 {
+      text-align: center;
+      padding: 15px;
+      font-family: Futura fantasy;
+    }
+
+    .submitButton {
+      box-shadow: 10px 14px -7px #276873;
+      background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+      border-radius: 8px;
+      display: inline-block;
+      cursor: pointer;
+      color: black;
+      font-family: Futura fantasy;;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 13px 32px;
+      text-decoration: none;
+
+    }
+  }
+
+  #content5 {
+    background: #667b95;
+    border-radius: 10px;
+    padding-top: 10px;
+    margin-top: 5px;
+    height: 40vh;
+    display: grid;
+    grid-template-columns: repeat( 1, 1fr );
+    grid-template-rows: repeat( 3, 1fr );
+    grid-gap: 1em;
+
+    input {
+      width: 100px;
+    }
+
+    select {
+      width: 200px;
+    }
+
+    label {
+
+    }
+
+    #weaponChoiceOne {
+      //width: 250px;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    #armorChoice {
+      //width: 250px;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    &:nth-child( 1 ) {
+      border: #18ffff;
+      padding: 1em;
+      grid-row: 1/3;
+      grid-column: 1/2;
+    }
+
+    &:nth-child( 2 ) {
+      border: #18ffff;
+      padding: 1em;
+      grid-row: 2/3;
+      grid-column: 1/2;
+    }
+
+  }
+
+  #content6 {
+    background: #ffdecc;
+    grid-area: backstory;
+    border-radius: 10px;
+    padding-top: 10px;
+    margin-top: 5px;
+    //margin-right: 138px;
+    height: 40vh;
+    display: grid;
+    grid-template-columns: repeat( 1, 1fr );
+    grid-template-rows: repeat( 3, 1fr );
+    grid-gap: 1em;
+
+    input {
+      width: 200px;
+    }
+
+    label {
+
+    }
+
+    select {
+      width: 180px;
+    }
+
+    #spaceChoice {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      font-family: Futura fantasy;
+    }
+
+    #scienceChoice {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      font-family: Futura fantasy;
+    }
+
+    #soldierChoice {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      font-family: Futura fantasy;
+    }
+
+    #hackerChoice {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      font-family: Futura fantasy;
+    }
+
+    #pirateChoice {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      font-family: Futura fantasy;
+    }
+
+    &:nth-child( 1 ) {
+      border: #18ffff;
+      padding: 1em;
+      grid-row: 1/3;
+      grid-column: 1/2;
+    }
+
+    &:nth-child( 2 ) {
+      border: #18ffff;
+      padding: 1em;
+      grid-row: 2/3;
+      grid-column: 1/2;
+    }
+
+    &:nth-child( 3 ) {
+      border: #18ffff;
+      padding: 1em;
+      grid-row: 3/3;
+      grid-column: 1/2;
+    }
+  }
+
+
+@media only screen and (min-width: 550px) {
+  .container {
+    max-width: 75%;
+  }
+}
+

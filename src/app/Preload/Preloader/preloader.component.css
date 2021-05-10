@@ -1,11 +1,17 @@
-
-.background{
-  background: black;
+.background {
+  background-size: contain;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  background: black center;
   padding-bottom: 130px;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content max-content;
+  grid-template-areas: "mainPic";
 }
 
 .preloadOne {
+  grid-area: mainPic;
   margin: auto;
-  width: 55%;
-  padding-top: 100px;
+
 }

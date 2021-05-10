@@ -77,7 +77,6 @@ export class PreloaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    //this.show = true;
     this.image = this.preload.getPreloadImage();
     console.log(`Are you an ${this.sim.Aetherist.name} or an ${this.sim.Alchemist.name}? I'd
     like to know so I can alert the team.`);

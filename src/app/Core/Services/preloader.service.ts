@@ -7,10 +7,10 @@ import { PreloaderBuilder} from '../../Shared/builder';
 export class PreloaderService {
 
   private preloadImage = PreloaderBuilder.create({
-    image: 'https://www.benjerry.com/files/live/sites/systemsite/files/whats-new/4237-black-lives-matter/BLM-solid-1200x630.png'
+    image: 'https://images7.alphacoders.com/442/thumb-1920-442794.jpg'
   });
   private preloadImage2 = PreloaderBuilder.create({
-    image: 'https://d279m997dpfwgl.cloudfront.net/wp/2020/06/GettyImages-1221138690-1000x667.jpg'
+    image: 'https://images3.alphacoders.com/953/thumb-1920-95395.jpg'
   });
 
   constructor()

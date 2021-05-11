@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {from, Observable, throwError} from "rxjs";
 import {find} from "rxjs/operators";
 import { HistoryDialogComponent } from "./dialogs/history-dialog.component";
+import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.component';
 
 
 
@@ -101,6 +102,14 @@ export class CharacterCreationComponent implements OnInit
   openHistoryDialog()
   {
     const dialogRef = this.dialog.open( HistoryDialogComponent );
+    dialogRef.afterClosed().subscribe( result => {
+      console.log(`Dialog result: ${result}`);
+    })
+  }
+
+  openClassDialog()
+  {
+    const dialogRef = this.dialog.open( ClassDialogComponent );
     dialogRef.afterClosed().subscribe( result => {
       console.log(`Dialog result: ${result}`);
     })

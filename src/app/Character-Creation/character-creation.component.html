@@ -21,7 +21,7 @@
             />
 
             <!-- CLASSES -->
-            <label class="input-group-text" for="classes">Character Class</label>
+            <label (click)="openClassDialog()" class="input-group-text" for="classes">Character Class</label>
             <select class="custom-select" formControlName="classes" id="classes" (change)="classUpdate($event.target)">
               <option value="">Choose a Class</option>
               <option *ngFor="let chosenClass of classes">{{ chosenClass }}</option>

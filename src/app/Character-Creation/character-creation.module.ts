@@ -5,6 +5,7 @@ import { SharedModule } from '../Shared/shared.module'
 import { CharacterCreationService } from "./character-creation.service";
 import { HistoryDialogComponent } from './dialogs/history-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
+import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatDialogModule } from "@angular/material/dialog";
   ],
   declarations: [
     CharacterCreationComponent,
-    HistoryDialogComponent
+    HistoryDialogComponent,
+    ClassDialogComponent
   ],
   providers: [ CharacterCreationService ]
 })

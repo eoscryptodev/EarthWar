@@ -3,13 +3,13 @@
 
     <div class="box">
       <div class="col-6">
-        <h3>Welcome to Earth War: The Battle for Sola</h3>
+        <h3 id="titleText">Welcome to Earth War: The Battle for Sola</h3>
       </div>
     </div>
 
     <div class="box">
       <div class="col-6">
-        <p>The Most Advanced Text-Based RPG Ever Built! Designed by Brian Lewis using
+        <p id="descText">The Most Advanced Text-Based RPG Ever Built! Designed by Brian Lewis using
           Angular 11, RxJS, NestJS, the Solana blockchain and lots of coffee! You've
           never seen a text-based game quite like this.
         </p>
@@ -20,17 +20,17 @@
   <section id="grid-a">
 
     <div class="box" id="myTab">
-      <h3>Join the Fight</h3>
+      <h3 id="titleTextTwo">Join the Fight</h3>
     </div>
 
     <div class="box">
       <mat-tab-group class="mat">
 
-        <mat-tab label="Sign-Up">
+        <mat-tab id="signUpLabel" label="Sign-Up">
           <app-sign-up></app-sign-up>
         </mat-tab>
 
-        <mat-tab label="Sign-In">
+        <mat-tab id="signInLabel" label="Sign-In">
           <app-sign-in></app-sign-in>
         </mat-tab>
 

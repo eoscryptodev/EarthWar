@@ -6,6 +6,8 @@ import { CharacterCreationService } from "./character-creation.service";
 import { HistoryDialogComponent } from './dialogs/history-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.component';
+import { HomeworldDialogComponent } from './dialogs/homeworld-dialog/homeworld-dialog.component';
+import { SpeciesDialogComponent } from './dialogs/species-dialog/species-dialog.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.compon
   declarations: [
     CharacterCreationComponent,
     HistoryDialogComponent,
-    ClassDialogComponent
+    ClassDialogComponent,
+    HomeworldDialogComponent,
+    SpeciesDialogComponent
   ],
   providers: [ CharacterCreationService ]
 })

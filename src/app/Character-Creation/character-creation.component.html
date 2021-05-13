@@ -37,14 +37,14 @@
             </select>
 
             <!-- SPECIES -->
-            <label class="input-group-text" for="species">Species</label>
+            <label (click)="openSpeciesDialog()" class="input-group-text" for="species">Species</label>
             <select class="custom-select" formControlName="species" id="species" (change)="speciesUpdate($event.target)">
               <option value="">Choose a Species</option>
               <option *ngFor="let chosenSpecies of species">{{ chosenSpecies }}</option>
             </select>
 
             <!-- HOME WORLD -->
-            <label class="input-group-text" for="homeworld">Home World</label>
+            <label (click)="openHomeworldDialog()" class="input-group-text" for="homeworld">Home World</label>
             <select class="custom-select" formControlName="homeworld" id="homeworld">
               <option value="">Where were you born?</option>
               <option *ngFor="let chosenHomeworld of homeworld">{{ chosenHomeworld }}</option>

@@ -9,7 +9,8 @@ import {from, Observable, throwError} from "rxjs";
 import {find} from "rxjs/operators";
 import { HistoryDialogComponent } from "./dialogs/history-dialog.component";
 import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.component';
-
+import { SpeciesDialogComponent } from './dialogs/species-dialog/species-dialog.component';
+import { HomeworldDialogComponent } from './dialogs/homeworld-dialog/homeworld-dialog.component';
 
 
 @Component({
@@ -99,7 +100,7 @@ export class CharacterCreationComponent implements OnInit
     console.log( 'Character Creation component loaded' );
   }
 
-  openHistoryDialog()
+  openHistoryDialog(): void
   {
     const dialogRef = this.dialog.open( HistoryDialogComponent );
     dialogRef.afterClosed().subscribe( result => {
@@ -107,9 +108,25 @@ export class CharacterCreationComponent implements OnInit
     })
   }
 
-  openClassDialog()
+  openClassDialog(): void
   {
     const dialogRef = this.dialog.open( ClassDialogComponent );
+    dialogRef.afterClosed().subscribe( result => {
+      console.log(`Dialog result: ${result}`);
+    })
+  }
+
+  openSpeciesDialog(): void
+  {
+    const dialogRef = this.dialog.open( SpeciesDialogComponent );
+    dialogRef.afterClosed().subscribe( result => {
+      console.log(`Dialog result: ${result}`);
+    })
+  }
+
+  openHomeworldDialog(): void
+  {
+    const dialogRef = this.dialog.open( HomeworldDialogComponent );
     dialogRef.afterClosed().subscribe( result => {
       console.log(`Dialog result: ${result}`);
     })

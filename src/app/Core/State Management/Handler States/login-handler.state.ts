@@ -11,20 +11,22 @@ export class LoginHandler implements LoginStateInterface
     this.logCurrentState();
   }
 
-  signIn( email: string, password: string ): void
+  signIn( email: string, password: string ): LoginState
   {
     if (this.state instanceof LoginState) {
       this.state = this.state.signIn( email, password );
     }
     this.logCurrentState();
+    return;
   }
 
-  signUp( email: string, password: string ): void
+  signUp( email: string, password: string ): LoginState
   {
     if (this.state instanceof LoginState) {
       this.state = this.state.signUp( email, password );
     }
     this.logCurrentState();
+    return;
   }
 
   private logCurrentState(): void

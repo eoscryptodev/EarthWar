@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from "../../../../Core/Services/login.service";
-import { AuthState } from '../../../../Core/State Management/States/auth.state';
-import { Observable } from "rxjs";
-import { withLatestFrom } from "rxjs/operators";
-import {LoginHandler} from "../../../../Core/State Management/Handler States/login-handler.state";
+import { LoginHandler } from "../../../../Core/State Management/Handler States/login-handler.state";
 
 @Component({
   selector: 'app-sign-in',

@@ -5,8 +5,7 @@ import { ArmorBuilderService } from '../Core/Services/armorBuilder.service';
 import { WeaponBuilderService } from '../Core/Services/weaponBuilder.service';
 import { CharacterCreationService } from './character-creation.service';
 import { MatDialog } from '@angular/material/dialog';
-import {from, Observable, throwError} from "rxjs";
-import {find} from "rxjs/operators";
+import { CharacterCreationHandler } from '../Core/State Management/Handler States/character-creation-handler.state';
 import { HistoryDialogComponent } from "./dialogs/history-dialog.component";
 import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.component';
 import { SpeciesDialogComponent } from './dialogs/species-dialog/species-dialog.component';
@@ -24,6 +23,7 @@ export class CharacterCreationComponent implements OnInit
   armorSelected: string = '';
   weaponSelected: string = '';
   chosenType: string = '';
+  characterState = new CharacterCreationHandler();
 
   // MAIN
   private characterName: string = '';
@@ -97,6 +97,7 @@ export class CharacterCreationComponent implements OnInit
 
   ngOnInit(): void
   {
+    this.characterState.creation();
     console.log( 'Character Creation component loaded' );
   }
 

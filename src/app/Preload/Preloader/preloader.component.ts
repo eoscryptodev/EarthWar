@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { PreloaderService } from '../../Core/Services/preloader.service';
 
-import {ChapterOneService } from '../../Core/Services/Adventure Services/Prologue/chapter-one.service';
+import { ChapterOneService } from '../../Core/Services/Adventure Services/Prologue/chapter-one.service';
 import { ProfessionsService } from '../../Core/Services/professions.service';
 import { CharacterBuilderService } from "../../Core/Services/characterBuilder.service";
 import { LocationsService } from "../../Core/Services/Adventure Services/Prologue/locations-service";
@@ -16,6 +16,8 @@ import { DecisionsService } from "../../Core/Services/Adventure Services/Prologu
 import { PageBuilder } from "../../Core/Services/Adventure Services/Prologue/pro-page-one/prologue-service";
 import { AdventurePageBuilder } from "../../Shared/builder";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { Store } from "@ngxs/store";
+import { Navigate } from "@ngxs/router-plugin";
 
 let enterTransition = transition(':enter', [
   style({
@@ -42,7 +44,6 @@ let fadeIn = trigger('fadeIn', [
 let fadeOut = trigger('fadeOut', [
   leaveTrans
 ]);
-
 @Component({
   selector: 'app-preloader',
   templateUrl: './preloader.component.html',
@@ -70,6 +71,7 @@ export class PreloaderComponent implements OnInit, OnDestroy {
   constructor(
     private preload: PreloaderService,
     private router: Router,
+    private store: Store,
     private sim: ProfessionsService,
     private char: CharacterBuilderService,
     private prologue: PageBuilder) {
@@ -96,7 +98,7 @@ export class PreloaderComponent implements OnInit, OnDestroy {
   pageTransition(): void
   {
     setTimeout(() => {
-      this.router.navigate(['preloaderTwo']);;
+      this.store.dispatch( new Navigate(['preloaderTwo']));
     }, 5000);
   }
 }

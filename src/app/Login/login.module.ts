@@ -10,6 +10,7 @@ import { SignInComponent } from './Sign-In/components/sign-in/sign-in.component'
 import { SignUpComponent } from './Sign-Up/components/sign-up/sign-up.component';
 import { VerifyEmailComponent } from './Verify/components/verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './Forgot-Password/components/forgot-password/forgot-password.component';
+import { State } from "@ngxs/store";
 
 @NgModule({
     imports: [
@@ -26,5 +27,9 @@ import { ForgotPasswordComponent } from './Forgot-Password/components/forgot-pas
     ForgotPasswordComponent
   ],
   providers: [ LoginService ]
+})
+@State<string[]>({
+  name: 'LoginState',
+  defaults: []
 })
 export class LoginModule { }

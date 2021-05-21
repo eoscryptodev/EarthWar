@@ -15,6 +15,10 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 
 
 @NgModule({
@@ -27,6 +31,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     SharedModule,
     HttpClientModule,
     AngularFireModule.initializeApp( environment.firebaseConfig ),
+    NgxsModule.forRoot([ PreloaderModule ], {
+      developmentMode: !environment.production
+    }),
+    //NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsRouterPluginModule.forRoot(),
     AngularFireAuthModule,
     AngularFirestoreModule,
     MatDialogModule

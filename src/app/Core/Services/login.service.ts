@@ -49,7 +49,7 @@ export class LoginService
   * return the character creation module and set the user data based on
   * the result of what was entered
   * */
-  signIn( email: string, password: string ): Promise<void>
+  userSignIn( email: string, password: string ): Promise<void>
   {
     return this.angularFireAuth.signInWithEmailAndPassword( email, password )
       .then( (result) => {

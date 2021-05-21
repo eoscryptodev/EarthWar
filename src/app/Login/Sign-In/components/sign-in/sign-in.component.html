@@ -13,11 +13,12 @@
 
       <div class="formGroup">
         <input type="button" class="btn btn-primary btn-block" value="Sign in"
-               (click)="loginAuthService.signIn(userName.value, userPassword.value)">
+               (click)="setState( userName.value, userPassword.value )">
+<!--        loginAuthService.signIn(userName.value, userPassword.value)-->
       </div>
 
       <div class="formGroup">
-        <button type="button" class="btn btn-danger btn-block" (click)="loginAuthService.googleAuth()">
+        <button type="button" class="btn btn-danger btn-block" (click)="getGoogleAuth()">
           Log in with Google
         </button>
       </div>

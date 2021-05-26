@@ -20,45 +20,33 @@ export class CharacterBuilderService
     name: 'Krellen',
     level: 1,
     history: 'Unknown',
-    profession: 'Unknown',
+    gender: 'male',
+    class: 'Unknown',
     archetype: 'Dread Reaver',
-    race: 'Human',
-    strength: 10,
+    species: 'Human',
+    might: 10,
     intelligence: 10,
-    social: 10,
+    lifeForce: 10,
     agility: 10,
     wisdom: 10,
-    vitality: 10,
+    spirit: 10,
     faction: 'Unknown'
   });
-  Janus = CharacterBuilder.create({
-    name: 'Janus',
-    level: 1,
-    history: 'Unknown',
-    profession: 'Unknown',
-    archetype: 'Dread Reaver',
-    race: 'Human',
-    strength: 10,
-    intelligence: 10,
-    social: 10,
-    agility: 10,
-    wisdom: 10,
-    vitality: 10,
-    faction: 'Unknown'
-  });
+
   PlayerCharacter = CharacterBuilder.create({
     name: '',
     level: 1,
     history: '',
-    profession: '',
+    class: '',
     archetype: '',
-    race: '',
-    strength: 10,
+    species: '',
+    gender: '',
+    might: 10,
     intelligence: 10,
-    social: 10,
+    lifeForce: 10,
     agility: 10,
     wisdom: 10,
-    vitality: 10,
+    spirit: 10,
     faction: ''
   });
 

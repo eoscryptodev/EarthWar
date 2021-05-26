@@ -11,7 +11,8 @@ import {
   AbstractControl,
   FormControl, ValidationErrors
 } from "@angular/forms";
-import { ArchetypeBuilder } from '../Shared/builder';
+import { ArchetypeBuilder, CharacterBuilder } from '../Shared/builder';
+import { AngularFirestore } from '@angular/fire/firestore';
 import {debounceTime, map} from "rxjs/operators";
 
 @Injectable({
@@ -22,6 +23,19 @@ export class CharacterCreationService
   update: formUpdate;
   skillsForm: FormGroup;
   abilitiesForm: FormGroup;
+
+  constructor( private firebaseDB: AngularFirestore )
+  {
+  }
+
+  createCharacter( character: FormGroup ) {
+    return new Promise<any>((resolve, reject) =>{
+      this.firebaseDB
+        .collection("characters")
+        .add( character )
+        .then(response => { console.log(response) }, error => reject(error));
+    });
+  }
 
   asyncArchetypeValidator(): AsyncValidatorFn
   {

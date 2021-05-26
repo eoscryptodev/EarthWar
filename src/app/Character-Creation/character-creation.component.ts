@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators} from "@angular/forms";
 import { CharacterHistory } from '../Shared/models/history.service'
 import { ArmorBuilderService } from '../Core/Services/armorBuilder.service';
 import { WeaponBuilderService } from '../Core/Services/weaponBuilder.service';
@@ -10,6 +10,7 @@ import { HistoryDialogComponent } from "./dialogs/history-dialog.component";
 import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.component';
 import { SpeciesDialogComponent } from './dialogs/species-dialog/species-dialog.component';
 import { HomeworldDialogComponent } from './dialogs/homeworld-dialog/homeworld-dialog.component';
+import { throwError } from "rxjs";
 
 
 @Component({
@@ -90,7 +91,7 @@ export class CharacterCreationComponent implements OnInit
     private characterFame: CharacterHistory,
     private armor: ArmorBuilderService,
     private weapon: WeaponBuilderService,
-    private update: CharacterCreationService,
+    private character: CharacterCreationService,
     public dialog: MatDialog)
   {
   }
@@ -268,13 +269,11 @@ export class CharacterCreationComponent implements OnInit
 
   chosenSpaceFame(): string
   {
-    console.log('Space fame selected');
     return this.characterFame.getSpaceExplorerFame();
   }
 
   chosenScientistFame(): string
   {
-    console.log('Scientist fame selected');
     return this.characterFame.getScientistFame();
   }
 
@@ -462,18 +461,61 @@ export class CharacterCreationComponent implements OnInit
     console.log( event )
   }
 
-  submitForm(): boolean
+  submitCharacterForm(): Promise<void>
   {
-    this.submitted = true;
-    if( this.finalForm.valid )
-    {
-      alert('Please fill out all required form fields!');
-      return false;
-    } else {
-      console.log( this.finalForm.value );
-    }
+    return this.character.createCharacter( this.characterForm.value );
   }
 
+  submitAbilitiesForm(): Promise<void>
+  {
+    return this.character.createCharacter( this.abilitiesForm.value );
+  }
+
+  submitHealthForm(): Promise<void>
+  {
+    return this.character.createCharacter( this.healthResolveForm.value );
+  }
+
+  submitSkillsForm(): Promise<void>
+  {
+    return this.character.createCharacter( this.skillsForm.value );
+  }
+
+  submitSavingForm(): Promise<void>
+  {
+    return this.character.createCharacter( this.savingThrowsForm.value );
+  }
+
+  // TODO: Find way to submit form in one bunch instead of separately
+  submitForm(): boolean
+  {
+    if( this.finalForm.valid )
+    {
+      this.characterState.submit();
+      this.submitCharacterForm()
+        .then( data => console.log( data ));
+      this.submitSkillsForm()
+        .then( data => console.log( data ));
+      this.submitAbilitiesForm()
+        .then( data => console.log( data ));
+      this.submitHealthForm()
+        .then( data => console.log( data ));
+      this.submitSavingForm()
+        .then( data => console.log( data ));
+      alert( 'Form Submitted' );
+
+    } else if ( this.finalForm.invalid )
+    {
+      alert( 'Form is Not Completed!' )
+      throwError('Please fill out all required form fields!');
+
+    } else {
+      this.finalForm.reset();
+    }
+    return;
+  }
+
+  // TODO: Find a way to extract the value of the archetype in the form so that it can be added to the database
   characterForm = new FormGroup({
       name: new FormControl( this.characterName, Validators.required ),
       classes: new FormControl( this.classes, Validators.required,  [
@@ -553,12 +595,15 @@ export class CharacterCreationComponent implements OnInit
     fame: new FormControl( this.fameControl, Validators.required )
   })
 
+  // TODO: Find better way to group all FormGroups into one for submission purposes
   finalForm = new FormGroup({
-    mainSection: new FormControl(this.characterForm),
-    abilitiesSection: new FormControl(this.abilitiesForm),
-    skillsSection: new FormControl(this.skillsForm),
-    fameSection: new FormControl(this.fameForm)
+    mainSection: new FormControl( this.characterForm ),
+    abilitiesSection: new FormControl( this.abilitiesForm ),
+    skillsSection: new FormControl( this.skillsForm ),
+    healthSection: new FormControl( this.healthResolveForm ),
+    savingSection: new FormControl( this.savingThrowsForm ),
+    //armorSection: new FormControl( this.armorForm.value ),
+    //fameSection: new FormControl( this.fameForm.value )
   })
-
 }
 

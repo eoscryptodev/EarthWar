@@ -50,26 +50,6 @@ export class PageService implements AdventurePage
     return `You are located inside ${this.location}`;
   }
 
-  getCharacters(): CharacterBuilder
-  {
-    let char = CharacterBuilder.create({
-      name: '',
-      level: 1,
-      history: '',
-      profession: '',
-      archetype: '',
-      race: '',
-      strength: 2,
-      intelligence: 5,
-      social: 3,
-      vitality: 5,
-      agility: 2,
-      wisdom: 7,
-      faction: ''
-    })
-    this.character = char.name
-    return `Your character's name is ${this.character}`
-  }
 
   getStoryEvents()
   {

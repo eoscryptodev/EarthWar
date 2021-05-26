@@ -23,7 +23,7 @@ export class CharacterCreation extends CharacterCreationState
 {
   creation(): CharacterCreationState
   {
-    console.log('You are in the process of creating your character');
+    console.log('You are in Creation State!');
     return;
   }
 }

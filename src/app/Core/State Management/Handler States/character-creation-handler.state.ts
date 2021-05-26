@@ -38,12 +38,9 @@ export class CharacterCreationHandler implements CharacterCreationInterface
     {
       console.log(this.creationState);
 
-    } else if ( this.submissionState instanceof CharacterCreationState )
+    } else if ( this.submissionState instanceof CharacterCreationState)
     {
-      console.log(this.submissionState);
-
-    } else {
-      console.log(this.creationState);
+      console.log( this.submissionState );
     }
 
   }

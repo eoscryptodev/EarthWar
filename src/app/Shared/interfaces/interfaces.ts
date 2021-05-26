@@ -57,28 +57,54 @@ export interface GameConfig {
 
 export interface Player {
   accountName: string;
-  characters: string[];
+  characters: Character[];
   stats: PlayerStats[];
 }
-
+/**
+ * The shape of a Character object in the game
+ */
 export interface Character {
   name: string;
   level: number;
   history: string;
-  profession: any;
+  class: any;
   archetype: string;
-  race: string;
-  strength?: number;
+  species: string;
+  gender: string;
+  might?: number;
+  lifeForce?: number;
   intelligence?: number;
-  social?: number;
+  charisma?: number;
   agility?: number;
   wisdom?: number;
-  vitality?: number;
+  spirit?: number;
+  seduction?: number;
+  leadership?: number;
+  acrobatics?: number;
+  athletics?: number;
+  clandestine?: number;
+  computers?: number;
+  disguise?: number;
+  engineering?: number;
+  intimidate?: number;
+  intuition?: number;
+  lifeScience?: number;
+  medicine?: number;
+  mysticism?: number;
+  piloting?: number;
+  stealth?: number;
+  staminaPoints?: number;
+  healthPoints?: number;
+  resolvePoints?: number;
+  fortitude?: number;
+  reflex?: number;
+  will?: number;
+  fame?: string;
   faction?: any;
   alignment?: string;
   weaponsHolding?: Weapons[];
   armorWearing?: Armor[];
-  battledFought?: any;
+  battlesFought?: number;
 }
 
 export interface PlayerClass {

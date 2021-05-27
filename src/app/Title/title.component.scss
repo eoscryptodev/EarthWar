@@ -1,7 +1,11 @@
+.background{
+  background: linear-gradient(90deg, rgba(50,82,123,1) 0%, rgba(70,130,180,1) 35%, rgba(11,130,184,1) 100%);
+}
+
 .container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 2px;
   height: 100vh;
   grid-template-areas:
     "sidebarOne titleButtons sidebarOne"
@@ -13,17 +17,50 @@
     grid-area: titleButtons;
     grid-column: 2/3;
     grid-row: 2;
+    text-align: center;
+    background: rgba(70,130,180,1);
+
+    .card-title{
+      font-size: 20px;
+      font-family: Futura, fantasy;
+    }
+
+    .card-action{
+      background-color: #E4B873;
+    }
   }
 
   .aboutCard{
     grid-area: titleButtons;
     grid-column: 2/3;
     grid-row: 3;
+    text-align: center;
+    background: rgba(70,130,180,1);
+
+    .card-title{
+      font-size: 20px;
+      font-family: Futura, fantasy;
+    }
+
+    .card-action{
+      background-color: #E4B873;
+    }
   }
 
   .homeCard{
     grid-area: titleButtons;
     grid-column: 2/3;
     grid-row: 4;
+    text-align: center;
+    background: rgba(70,130,180,1);
+
+    .card-title{
+      font-size: 20px;
+      font-family: Futura, fantasy;
+    }
+
+    .card-action{
+      background-color: #E4B873;
+    }
   }
 }

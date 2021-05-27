@@ -12,6 +12,9 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "types": [
+      "materialize-css"
+    ],
     "lib": [
       "es2018",
       "dom"

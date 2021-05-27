@@ -1,0 +1,29 @@
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  height: 100vh;
+  grid-template-areas:
+    "sidebarOne titleButtons sidebarOne"
+    "sidebarOne titleButtons sidebarOne"
+    "sidebarOne titleButtons sidebarOne"
+    "sidebarOne titleButtons sidebarOne";
+
+  .playCard{
+    grid-area: titleButtons;
+    grid-column: 2/3;
+    grid-row: 2;
+  }
+
+  .aboutCard{
+    grid-area: titleButtons;
+    grid-column: 2/3;
+    grid-row: 3;
+  }
+
+  .homeCard{
+    grid-area: titleButtons;
+    grid-column: 2/3;
+    grid-row: 4;
+  }
+}

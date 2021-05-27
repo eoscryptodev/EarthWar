@@ -9,3 +9,7 @@ export interface CharacterCreationInterface {
   creation?(): void;
   submit?(): void;
 }
+
+export interface TitleInterface {
+  title(): void;
+}

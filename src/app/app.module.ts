@@ -19,6 +19,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { HeaderComponent } from './Header/header.component';
 
 
 @NgModule({
@@ -44,9 +45,12 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
   declarations: [
     AppComponent,
     ProPageOneComponent,
+    //HeaderComponent,
   ],
   providers: [],
-  exports: [],
+  exports: [
+    //HeaderComponent
+  ],
   bootstrap: [ AppComponent ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

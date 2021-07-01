@@ -10,7 +10,7 @@ import { HistoryDialogComponent } from "./dialogs/history-dialog.component";
 import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.component';
 import { SpeciesDialogComponent } from './dialogs/species-dialog/species-dialog.component';
 import { HomeworldDialogComponent } from './dialogs/homeworld-dialog/homeworld-dialog.component';
-import { throwError } from "rxjs";
+import {Observable, throwError} from "rxjs";
 import { Navigate } from "@ngxs/router-plugin";
 import { Store } from "@ngxs/store";
 
@@ -27,6 +27,7 @@ export class CharacterCreationComponent implements OnInit
   weaponSelected: string = '';
   chosenType: string = '';
   characterState = new CharacterCreationHandler();
+  finalF$: Observable<FormGroup>;
 
   // MAIN
   private characterName: string = '';

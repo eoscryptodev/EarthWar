@@ -4,6 +4,7 @@ import { TitleService } from '../Core/Services/title.service';
 import { TitleComponent } from "./title.component";
 import { TitleRoutingModule } from "./title-routing.module";
 import { SharedModule } from "../Shared/shared.module";
+import { HeaderComponent } from "../Header/header.component";
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SharedModule } from "../Shared/shared.module";
   ],
   declarations: [
     TitleComponent,
+    HeaderComponent
   ],
   providers: [ TitleService ]
 })

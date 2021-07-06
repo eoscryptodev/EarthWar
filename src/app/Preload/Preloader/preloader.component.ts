@@ -18,6 +18,7 @@ import { AdventurePageBuilder } from "../../Shared/builder";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { Store } from "@ngxs/store";
 import { Navigate } from "@ngxs/router-plugin";
+import { Connection } from "@solana/web3.js";
 
 let enterTransition = transition(':enter', [
   style({
@@ -68,6 +69,10 @@ export class PreloaderComponent implements OnInit, OnDestroy {
   characterName: string;
   // @ViewChild('nameInput') nameInputRef: ElementRef;
 
+  datahubUrl: string = 'solana--devnet--rpc.datahub.figment.io';
+  devNet: string = 'https://api.devnet.solana.com';
+  apiKey: string = 'f4c50ec23a922eb26fc7f15b835bd2ef';
+
   constructor(
     private preload: PreloaderService,
     private router: Router,
@@ -80,15 +85,24 @@ export class PreloaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.image = this.preload.getPreloadImage();
-    console.log(`Are you an ${this.sim.Aetherist.name} or an ${this.sim.Alchemist.name}? I'd
-    like to know so I can alert the team.`);
-    console.table(this.prologue.PageOne);
-    console.log('Preloader 1 Loaded!');
+    const url = this.connectionCredentials();
+    const connected = new Connection( url );
+    connected.getVersion()
+      .then(version => {
+        console.log(version, 'You are connected!');
+      })
+      .catch(error => console.log(error));
+
     this.pageTransition();
   }
 
   ngOnDestroy() {
 
+  }
+
+  connectionCredentials()
+  {
+    return `https://${this.datahubUrl}/apikey/${this.apiKey}`;
   }
 
   displayImage(): string {

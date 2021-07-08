@@ -10,9 +10,10 @@ import { HistoryDialogComponent } from "./dialogs/history-dialog.component";
 import { ClassDialogComponent } from './dialogs/class-dialog/class-dialog.component';
 import { SpeciesDialogComponent } from './dialogs/species-dialog/species-dialog.component';
 import { HomeworldDialogComponent } from './dialogs/homeworld-dialog/homeworld-dialog.component';
-import {Observable, throwError} from "rxjs";
+import {from, interval, merge, Observable, Subscription, throwError} from "rxjs";
 import { Navigate } from "@ngxs/router-plugin";
 import { Store } from "@ngxs/store";
+import {map, mapTo} from "rxjs/operators";
 
 
 @Component({
@@ -27,7 +28,8 @@ export class CharacterCreationComponent implements OnInit
   weaponSelected: string = '';
   chosenType: string = '';
   characterState = new CharacterCreationHandler();
-  finalF$: Observable<FormGroup>;
+
+
 
   // MAIN
   private characterName: string = '';
@@ -104,6 +106,7 @@ export class CharacterCreationComponent implements OnInit
   {
     this.characterState.creation();
     console.log( 'Character Creation component loaded' );
+    console.log(this.characterStream$);
   }
 
   openHistoryDialog(): void
@@ -617,71 +620,31 @@ export class CharacterCreationComponent implements OnInit
     //armorSection: new FormControl( this.armorForm.value ),
     //fameSection: new FormControl( this.fameForm.value )
   })
-  /*completedForm = new FormGroup({
-    character: new FormGroup({
-      name: new FormControl( this.characterName, Validators.required ),
-      classes: new FormControl( this.classes, Validators.required),
-      histories: new FormControl( this.histories, Validators.required),
-      species: new FormControl( this.species, Validators.required ),
-      homeworld: new FormControl( this.homeworld, Validators.required ),
-      gender: new FormControl( this.gender, Validators.required ),
-      archetype: new FormControl( this.archetype, Validators.required)
-    }),
-    abilities: new FormGroup({
-      might: new FormControl( this.might, Validators.required ),
-      mightMod: new FormControl( this.mightMod, Validators.required ),
-      agility: new FormControl( this.agility, Validators.required ),
-      agilityMod: new FormControl( this.agilityMod, Validators.required ),
-      lifeForce: new FormControl( this.lifeForce, Validators.required ),
-      lifeForceMod: new FormControl( this.lifeForceMod, Validators.required ),
-      intelligence: new FormControl( this.intelligence, Validators.required ),
-      intelligenceMod: new FormControl( this.intelligenceMod, Validators.required ),
-      wisdom: new FormControl( this.wisdom, Validators.required ),
-      wisdomMod: new FormControl( this.wisdomMod, Validators.required ),
-      charisma: new FormControl( this.charisma, Validators.required ),
-      charismaMod: new FormControl( this.charismaMod, Validators.required ),
-      spirit: new FormControl( this.spirit, Validators.required ),
-      spiritMod: new FormControl( this.spiritMod, Validators.required ),
-      seduction: new FormControl( this.seduction, Validators.required ),
-      seductionMod: new FormControl( this.seductionMod, Validators.required ),
-      leadership: new FormControl( this.leadership, Validators.required ),
-      leadershipMod: new FormControl( this.leadershipMod, Validators.required ),
-    }),
-    skills: new FormGroup({
-      acrobatics: new FormControl( this.acrobatics ),
-      athletics: new FormControl( this.athletics ),
-      computers: new FormControl( this.computers ),
-      clandestine: new FormControl( this.clandestine ),
-      disguise: new FormControl( this.disguise ),
-      engineering: new FormControl( this.engineering ),
-      intimidate: new FormControl( this.intimidate ),
-      intuition: new FormControl( this.intuition ),
-      lifeScience: new FormControl( this.lifeScience ),
-      medicine: new FormControl( this.medicine ),
-      mysticism: new FormControl( this.mysticism ),
-      piloting: new FormControl( this.piloting ),
-      stealth: new FormControl( this.stealth ),
-    }),
-    health: new FormGroup({
-      currentStamina: new FormControl( this.currentStamina, Validators.required ),
-      totalStamina: new FormControl( this.totalStamina, Validators.required ),
-      currentHealth: new FormControl( this.currentHealth, Validators.required ),
-      totalHealth: new FormControl( this.totalHealth, Validators.required ),
-      currentResolve: new FormControl( this.currentResolve, Validators.required ),
-      totalResolve: new FormControl( this.totalResolve, Validators.required )
-    }),
-    saving: new FormGroup({
-      fortitude: new FormControl( this.fortitude, Validators.required ),
-      will: new FormControl( this.will, Validators.required ),
-      reflex: new FormControl( this.reflex, Validators.required )
-    }),*/
-    /*armor: new FormGroup({
-      armor: new FormControl( this.armorControl, Validators.required ),
-      weapon: new FormControl( this.weaponControl, Validators.required )
-    }),
-    fame: new FormGroup({
-      fame: new FormControl( this.fameControl, Validators.required )
-    })
-  })*/
+
+  // Create empty array
+  // Create an observable for each formGroup
+  characterStream$: Observable<string> = this.characterForm.value;
+
+  abilitiesStream$: Observable<number> = this.abilitiesForm.valueChanges.pipe();
+
+  skillsStream$: Observable<number> = this.skillsForm.valueChanges.pipe();
+
+  healthResolveStream$: Observable<number> = this.healthResolveForm.valueChanges.pipe();
+
+  savingStream$: Observable<number> = this.savingThrowsForm.valueChanges.pipe();
+
+  armorStream$: Observable<string> = this.armorForm.valueChanges.pipe();
+
+  fameStream$: Observable<string> = this.fameForm.valueChanges.pipe();
+  // map observables to empty array
+  characterStreams$ = merge(
+    this.characterForm.valueChanges.pipe(mapTo(this.characterForm.value)),
+    this.abilitiesForm.valueChanges.pipe(mapTo(this.abilitiesForm.value)),
+    this.skillsForm.valueChanges.pipe(mapTo(this.skillsForm.value)),
+    this.healthResolveForm.valueChanges.pipe(mapTo(this.healthResolveForm.value)),
+    this.savingThrowsForm.valueChanges.pipe(mapTo(this.savingThrowsForm.value)),
+  );
+  // Submit collected observable
+
 }
 

@@ -89,7 +89,7 @@ export class PreloaderComponent implements OnInit, OnDestroy {
     const connected = new Connection( url );
     connected.getVersion()
       .then(version => {
-        console.log(version, 'You are connected!');
+        console.log(version, 'Connection!');
       })
       .catch(error => console.log(error));
 
